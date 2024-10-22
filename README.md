@@ -76,22 +76,18 @@ The Graduate Trainee Management System (GTMS) is a centralized platform designed
 
 2. Install the required packages:
   ```bash
-  Copy code
   pip install -r requirements.txt
   ```
 3. Configure your AWS settings and database connections in the settings file.
 4. Run migrations to set up the database:
   ```bash
-  Copy code
   python manage.py migrate
   ```
 5. Create a superuser for admin access:
   ```bash
-  Copy code
   python manage.py createsuperuser
   ```
 6. Start the development server:
   ```bash
-  Copy code
   python manage.py runserver
   ```
