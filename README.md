@@ -1,6 +1,5 @@
 # Graduate Trainee Management System (GTMS)
 
-
 ## Overview
 
 The Graduate Trainee Management System (GTMS) is a centralized platform designed to manage and monitor the progress of graduate trainees. Built on AWS for scalability, GTMS focuses on user management, task management, project tracking, and performance evaluation.
