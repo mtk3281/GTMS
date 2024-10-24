@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Email Verification Sent{% endblock %}
+
+{% block content %}
+    <h2>Check Your Inbox!</h2>
+    <p>We have sent you a verification link. Please check your email to complete the registration process.</p>
+    <p>If you don’t see the email, please check your spam folder.</p>
+    <a href="{% url 'email_entry' %}" class="btn btn-primary">Resend Verification Email</a>
+{% endblock %}

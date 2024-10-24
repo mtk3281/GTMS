@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Welcome to the Graduate Trainee Management System</h2>
+<p>
+    This platform allows graduate trainees to track their progress, collaborate with mentors, and manage their learning journey.
+</p>
+
+{% if user.is_authenticated %}
+    <div class="alert alert-success">
+        <p>Welcome, {{ user.name }}! You are now logged in.</p>
+        
+        <!-- Display user profile details -->
+        <h3>Your Profile</h3>
+        <ul>
+            <li><strong>Email:</strong> {{ user.email }}</li>
+            <li><strong>Name:</strong> {{ user.name }}</li>
+            <li><strong>Skill Profile:</strong> {{ user.skill_profile|default:"Not specified" }}</li>
+            <li><strong>Total Completed Tasks:</strong> {{ user.total_completed_task }}</li>
+            <li><strong>Role:</strong> {{ user.get_role_display }}</li>
+        </ul>
+
+        <!-- Add buttons for logout and completing profile -->
+        <p>
+            <a class="btn btn-secondary" href="{% url 'logout' %}">Logout</a>
+        </p>
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        <p>You are currently not logged in. Please log in to access more features.</p>
+        <p>
+            <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+            <a class="btn btn-secondary" href="{% url 'email_entry' %}">Sign Up</a>
+        </p>
+    </div>
+{% endif %}
+
+{% endblock %}

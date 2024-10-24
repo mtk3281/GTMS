@@ -1,0 +1,24 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa; /* Light background */
+}
+.bg-lightblue {
+    background-color: #4aa3e0 !important; /* Custom light blue */
+}
+.messages {
+    list-style-type: none;
+    padding: 0;
+}
+.messages li {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+.messages .success {
+    background-color: #d4edda; /* Light green */
+    color: #155724; /* Dark green */
+}
+.messages .error {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red */
+}
