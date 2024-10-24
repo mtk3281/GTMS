@@ -14,6 +14,21 @@ from django.shortcuts import get_object_or_404
 
 CustomUser = get_user_model()
 
+
+from django.contrib.auth.models import Group
+
+def assign_user_to_group(user):
+    """
+    Assign the user to the appropriate group based on their role.
+    """
+    
+    group = Group.objects.get(name='trainee')
+    
+    # Add the user to the appropriate group
+    user.groups.add(group)
+    user.save()  # Save the user after assigning the group
+
+
 def home(request):
     return render(request, 'home.html')
 
@@ -57,8 +72,12 @@ def email_entry_view(request):
                     return redirect('email_verification_sent')
             else:
                 # Set user as inactive until verified
-                user.is_active = False
+                user.role = 'trainee'  # Set a default role if needed
+                user.is_active = False  # Set user as inactive until verified
                 user.save()
+                
+                # Assign user to the 'trainee' group or other role
+                assign_user_to_group(user)
                 send_verification_email(request, user)
                 return redirect('email_verification_sent')
     else:
@@ -126,3 +145,7 @@ def profile_creation_view(request, user_id):
         form = CustomUserCreationForm(instance=user)
     
     return render(request, 'accounts/profile_creation.html', {'form': form})
+
+
+
+
