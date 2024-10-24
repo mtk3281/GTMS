@@ -7,7 +7,6 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.contrib.auth.tokens import default_token_generator as token_generator
 from django.contrib.sites.shortcuts import get_current_site
-from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse
 from django.contrib import messages
@@ -111,12 +110,12 @@ def verify_email_view(request, uidb64, token):
         messages.error(request, 'Invalid verification link. Please try again.')
         return render(request, 'accounts/verification_failed.html')
     
-    
+
 def profile_creation_view(request, user_id):
-    user = get_object_or_404(CustomUser, user_id=user_id)  # Fetch user based on user_id
+    user = get_object_or_404(CustomUser, user_id=user_id)
 
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST, instance=user)  # Use the fetched user
+        form = CustomUserCreationForm(request.POST, instance=user)
         if form.is_valid():
             form.save()  
             messages.success(request, 'Profile updated successfully! You can now log in.')
